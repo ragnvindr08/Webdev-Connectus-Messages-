@@ -11,37 +11,36 @@
     
     <style>
 
+   body {
+ background-color: #efefef; /* Changed to white */
+ padding-top: 80px;
+ margin:60px;
+ margin-left: 160px; /* Same as the width of the sidenav */
+ font-size: 20px; /* Increased text to enable scrolling */
+ padding: 0px 10px;
+  }
 
-        body {
-          background-color: #efefef; /* Changed to white */
-          padding-top: 80px;
-          margin:60px;
-          margin-left: 160px; /* Same as the width of the sidenav */
-          font-size: 20px; /* Increased text to enable scrolling */
-          padding: 0px 10px;
-        }
+.navbar-dark .navbar-nav .nav-link {
+  color: white; /* Changed link color to black */
+  }
 
-        .navbar-dark .navbar-nav .nav-link {
-           
-            color: white; /* Changed link color to black */
-          }
-          body.dark-mode {
-            background-color: #1e1e1e; /* Dark background */
-            color: #ffffff; /* White text color */
-        }
+ body.dark-mode {
+  background-color: #1e1e1e; /* Dark background */
+  color: #ffffff; /* White text color */
+  }  
         
-        .sidenav {
-          margin-top:50px;
-        height: 100%;
-        width: 160px;
-        position: fixed;
-        z-index: 1;
-         top: 0;
-        left: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        padding-top: 20px;
-        }
+.sidenav {
+  margin-top:50px;
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  }
   
   .sidenav a {
     
@@ -86,7 +85,7 @@
     {% block content %}
     {% endblock content %}
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>

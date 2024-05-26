@@ -1,0 +1,117 @@
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grinding Zone</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+  
+</head>
+<body>
+
+  <style>
+    .sidenav {
+      margin-top:50px;
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+     top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+    }
+
+.sidenav a {
+
+padding: 6px 8px 6px 16px;
+text-decoration: none;
+font-size: 15px;
+color: #818181;
+display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+</style>
+
+<div class="sidenav"> 
+  <a href="/home/">Developers</a>   <!--Kahit mga description lng muna ng content-->
+  <a href="connections.html">Connections</a>
+  <a href="newsupdate.html">News and Updates</a>
+  <a href="/community/">Community</a>
+  <a href="friends.html">Friends</a>
+  <a href="/messages/">Messages</a>
+  <a href="#contact">Privacy</a>
+  <a href="#clients">About</a>
+  <a href="#contact">Settings</a>
+</div>
+
+      <script>
+        var slideIndex = 0;
+        showSlides();
+      
+        function showSlides() {
+          var i;
+          var slides = document.getElementsByClassName("slide");
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {slideIndex = 1}
+          slides[slideIndex-1].style.display = "block";
+          setTimeout(showSlides, 4000); // Change image every 2 seconds
+        }
+      </script>
+    </div>
+
+ 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    
+    <a class="navbar-brand" href=""><img src="/static/css/images/" alt="Grinding Zone"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> <!-- Added justify-content-end class -->
+      <ul style="font-size:15px;" class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/home/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Settings</a>
+        </li>
+       
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/registrations/signup.html">Sign Up</a>
+        </li>
+      </ul>
+      <div class="custom-control custom-switch ml-lg-2"> <!-- Added ml-lg-2 class for margin -->
+        <input type="checkbox" class="custom-control-input" id="darkModeSwitch">
+        <label class="custom-control-label" for="darkModeSwitch">Dark Mode</label>
+      </div>
+    </div>
+  </nav>
+
+
+  <!--eto lang papalitan sa baba-->
+  <div style="margin-left:15%; margin-top:10%; margin-right:10%;">
+
+  <section> <!--kayo nlng bhala maglagay(edit) odikaya kahit shuffle like image sa taas -->
+    <h2>Community</h2>
+    <p>On ConnectUs, we're building more than just a social network; we're nurturing a dynamic online community where individuals can create meaningful connections based on shared interests, values, and experiences. Our platform empowers users to engage in open dialogue, collaborate on projects, support one another in achieving common goals, and yes, make friends along the way. From local events and volunteer opportunities to lively discussions and resource sharing, ConnectUs is the digital gathering place where community bonds are strengthened, ideas are sparked, and positive change takes root. Join us and be a part of something bigger—where every connection matters.</p>
+    </section>
+          <img src="picture.png" alt="" style="width:100%">
+
+  </div>
+</body>
+
+
+</html>
+
+
+
+

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-6)xt=zud5@60vk)wkpdnuo+ch$if04bxa78xlm6yc&bwxuem2v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['f02c-2405-8d40-4440-6e11-216-3eff-fe3c-7851.ngrok-free.app','127.0.0.1']
+ALLOWED_HOSTS = ['192.168.213.16','127.0.0.1']
 
 
 # Application definition
@@ -58,7 +58,11 @@ ROOT_URLCONF = 'loginSignup.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates/registration"], 
+         'DIRS': [
+            BASE_DIR / "templates/registration",
+             # Add this line or your specific path
+            BASE_DIR / "templates"  # Include a general templates directory if you have one
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,3 +141,4 @@ import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/media/'

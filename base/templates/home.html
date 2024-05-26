@@ -105,7 +105,7 @@
   <body>
    
    <div>
-    ConnectUs News:
+    
     <div class="search-bar"><img style="width:auto; height:37px;" src="/static/css/images/logo.png" alt="Connectus">
       <input type="text" placeholder="Search News...">
       <button type="submit">Search</button>
@@ -164,7 +164,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> <!-- Added justify-content-end class -->
       <ul style="font-size:15px;" class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="http://127.0.0.1:8000/">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Settings</a>
@@ -185,9 +185,9 @@
     <a href="#about">Developers</a>
     <a href="#services">Connections</a>
     <a href="#clients">News and Updates</a>
-    <a href="#contact">Community</a>
+    <a href="/community/">Community</a>
     <a href="#clients">Friends</a>
-    <a href="#contact">Messages</a>
+    <a href="/messages/">Messages</a>
     <a href="#clients">Privacy</a>
     <a href="#contact">About</a>
     <a href="#clients">Settings</a>
@@ -218,9 +218,11 @@
   
               
 </div>
+
 {% extends "base.html" %}
 
 {% block content %}
+
 
 <div class="log-out">  
 
@@ -233,6 +235,8 @@
 
 
 </div>
+
+
 
 {% endblock content %}
 
