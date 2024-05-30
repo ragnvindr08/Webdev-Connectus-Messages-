@@ -77,6 +77,29 @@
     background-position: 100% 0; /* Adjust background movement direction as needed */
   }
 }
+
+.gradient-text1 {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-family: Impact, sans-serif;
+  font-size: 20px; /* Adjust font size as needed */
+  text-transform: uppercase; /* Capitalize all letters */
+  animation: animateBackground 20s linear infinite; /* Adjust animation duration as needed */
+}
+
+@keyframes animateBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0; /* Adjust background movement direction as needed */
+  }
+}
       </style>
     </head>
 <body>  

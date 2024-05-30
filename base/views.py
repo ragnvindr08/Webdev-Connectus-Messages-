@@ -62,3 +62,25 @@ def messages_view(request):
         received_messages = Message.objects.filter(receiver=request.user)
         return render(request, 'messages.html', {'received_messages': received_messages}) # Assuming 'messages' is the correct name of the URL pattern
     
+def messages_home(request):
+    if request.method == 'POST':
+        receiver_username = request.POST.get('receiver')
+        content = request.POST.get('content')
+
+        try:
+            receiver = User.objects.get(username=receiver_username) 
+            message = Message.objects.create(sender=request.user, receiver=receiver, content=content)
+            messages.success(request, 'Message sent successfully!')
+            received_messages = Message.objects.filter(receiver=request.user)
+            return render(request, 'home.html', {'received_messages': received_messages}) # Assuming 'messages' is the correct name of the URL pattern
+        except User.DoesNotExist:
+            messages.error(request, 'Invalid username. Please enter a valid user.')
+            received_messages = Message.objects.filter(receiver=request.user)
+            return render(request, 'home.html', {'received_messages': received_messages}) # Assuming 'messages' is the correct name of the URL pattern
+        except Exception as e:
+            messages.error(request, f'Error sending message: {e}')
+            received_messages = Message.objects.filter(receiver=request.user)
+            return render(request, 'home.html', {'received_messages': received_messages}) # Assuming 'messages' is the correct name of the URL pattern 
+    else:
+        received_messages = Message.objects.filter(receiver=request.user)
+        return render(request, 'homemessage.html', {'received_messages': received_messages}) # Assuming 'messages' is the correct name of the URL pattern

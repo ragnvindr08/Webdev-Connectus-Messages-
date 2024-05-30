@@ -101,11 +101,92 @@
   .slide:hover::before {
     background: linear-gradient(rgba(43, 43, 43, 0.5), rgba(43, 43, 43, 0.5)); /* Gradient with 30% opacity */
   }
+
+  .custom-alert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2b2b2b;
+    color: white;
+    padding: 90px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+   
+    text-align: center;
+    z-index: 1000;
+  
+}
+
+.custom-alert img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    margin-top:50px;
+}
+.custom-alert button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.custom-alert button:hover {
+    background-color: #0056b3;
+}
+
+.message-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  left: 80%; /* Adjust as needed */
+  top: 95%; /* Adjust as needed */
+  transform: translateY(-50%);
+  margin-top:6px;
+  cursor: move; /* Set cursor to move */
+}
+.message-container.dragging {
+  cursor: grabbing;
+}
+.message-toggle {
+  background-color: black;
+  color: #fff;
+  padding:8px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  cursor: grabbing;
+}
+
+.message-toggle.active {
+  background-color: #dc3545;
+}
+
+#message-icon {
+  margin-right: 5px;
+}
+
+#message-text {
+  display: inline-block;
+  
+  
+}
+
+.message-box{
+  background:#2b2b2b;
+  padding:55px;
+ 
+  margin-left:-200px;
+  margin-top:-680px;
+  border-radius:8px;
+}
 </style>
   <body>
    
-   <div>
-    
+<div>
     <div class="search-bar"><img style="width:auto; height:37px;" src="/static/css/images/logo.png" alt="Connectus">
       <input type="text" placeholder="Search News...">
       <button type="submit">Search</button>
@@ -135,8 +216,10 @@
     </div
     
     <body>
-      
+
+    
       <script>
+     
         var slideIndex = 0;
         showSlides();
       
@@ -151,6 +234,7 @@
           slides[slideIndex-1].style.display = "block";
           setTimeout(showSlides, 4000); // Change image every 2 seconds
         }
+
       </script>
     </div>
 
@@ -225,19 +309,120 @@
 
 
 <div class="log-out">  
-
   <a href="{% url 'base:logout' %}" style="position: fixed; color: white; background-image: linear-gradient(to right, #0c0c14, black); text-decoration: none; padding: 10px 20px; border-radius: 5px; transition: color 0.3s, background-color 0.3s;" onmouseover="this.style.color='red'; this.style.backgroundColor='white'" onmouseout="this.style.color='white'; this.style.backgroundColor='transparent'">User Out</a>
-
 </div>
 
 <div class="gradient-text">
   <h4>Welcome, {{ user.username }} <img style="width:20px; height;20px; margin-top: -10px;" src="/static/css/images/verified.png" alt="icon"> </h4>  <!--base.html nakakonek-->
-
-
 </div>
 
+<div id="customAlert" class="custom-alert">
+  <img style="width:auto; height:80px;" src="/static/css/images/logo.png" alt="Welcome Icon">
+  <div class="gradient-text1">
+  <p style="margin-bottom:60px;"> Welcome Home, {{ user.username }}</p>
+  </div>
+  <button onclick="closeAlert()">Exit</button>
+</div>
 
+<div class="message-container draggable">
+<div class="message-container">
+  <div class="message-toggle" onclick="toggleMessage()">
+    <span id="message-icon">&#9993;</span>
+    <span id="message-text">Inbox Message</span>
+  </div>
+  <div class="message-box" style="display: none;">
+    <div id="message-content">
+       
+    </div>
+    <h5 style=" margin-top:10px; "><a style="text-decoration:none ;"href="/messages/">Go to Chat</a></h5>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+<script>
+  if (window.innerWidth > 768) {
+    showAlert();
+}
 
+function showAlert() {
+    document.getElementById('customAlert').style.display = 'block';
+}
+
+function closeAlert() {
+    document.getElementById('customAlert').style.display = 'none';
+}
+
+function toggleMessage() {
+  var messageBox = document.querySelector('.message-box');
+  var messageContent = document.getElementById('message-content');
+
+  if (messageBox.style.display === 'none' || messageBox.style.display === '') {
+    messageBox.style.display = 'block';
+    messageContent.innerHTML = ''; // Clear previous content
+    // Load content into the message box
+    loadMessageContent();
+  } else {
+    messageBox.style.display = 'none';
+  }
+
+  var messageToggle = document.querySelector('.message-toggle');
+  messageToggle.classList.toggle('active');
+}
+
+// Function to load message content
+function loadMessageContent() {
+  // Here, you can load content into the message box dynamically
+  // For example, you can use AJAX to fetch content from a server
+  // Example:
+  var messageContent = document.getElementById('message-content');
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // On successful response, update the message content
+        messageContent.innerHTML = xhr.responseText;
+
+        // Set the desired size for the message content
+        messageContent.style.width = '120%'; // Set width
+        messageContent.style.height = '50%'; // Set height
+       
+      } else {
+        // Handle errors
+        messageContent.innerHTML = 'Failed to load content';
+      }
+    }
+  };
+
+  
+  xhr.open('GET', '/homemessages/', true);
+  xhr.send();
+}
+const messageContainer = document.querySelector('.message-container');
+
+let offsetX;
+let offsetY;
+let isDragging = false;
+
+messageContainer.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  const rect = messageContainer.getBoundingClientRect();
+  offsetX = e.clientX - rect.left;
+  offsetY = e.clientY - rect.top;
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    messageContainer.style.left = e.clientX - offsetX + 'px';
+    messageContainer.style.top = e.clientY - offsetY + 'px';
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+</script>
 {% endblock content %}
 
 </body>

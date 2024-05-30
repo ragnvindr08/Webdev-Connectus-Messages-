@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views 
 from .views import messages_view
+from .views import messages_home
 
 urlpatterns = [
     path("home/", home, name="home"),
@@ -13,7 +14,7 @@ urlpatterns = [
     path('registrations/signup.html', authView,name='signup'),
     path('community/', views.community, name='community'), 
     path('messages/', messages_view, name='messages'), #messages url connected siya sa view.py yung messages_view
-    
+    path('homemessages/', messages_home, name='messageshome'),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
