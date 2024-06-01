@@ -141,10 +141,10 @@
   justify-content: flex-start;
   align-items: center;
   position: fixed;
-  left: 80%; /* Adjust as needed */
-  top: 95%; /* Adjust as needed */
+  right: 1%; /* Adjust as needed */
+  top: 50%; /* Adjust as needed */
   transform: translateY(-50%);
-  margin-top:6px;
+  margin-top: 6px;
   cursor: move; /* Set cursor to move */
 }
 .message-container.dragging {
@@ -175,13 +175,15 @@
   
 }
 
-.message-box{
-  background:#2b2b2b;
-  padding:55px;
- 
-  margin-left:-200px;
-  margin-top:-680px;
-  border-radius:8px;
+.message-box {
+  background: #2b2b2b;
+  padding: 55px;
+  position: fixed;
+  top: 50%;
+  left: -300px;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 2px black;
 }
 </style>
   <body>
@@ -194,17 +196,17 @@
     <div style="background-color: #2b2b2b;" class="slideshow-container">
       <div class="slide">
         <h5 style="color: white; margin-left: 10px;">ConnectUs Progress Development</h5>
-        <img src="/static/css/images/progress.png" alt="Slide 1">
+        <img src="/static/css/images/slide4.png" alt="Slide 1">
       </div>
     
       <div class="slide">
-        <h5 style="color: white; margin-left: 10px;">Global Games Developement News</h5>
-        <img src="/static/css/images/background2.jpg" alt="Slide 2">
+        <h5 style="color: white; margin-left: 10px;">ConnectUs Progress Development</h5>
+        <img src="/static/css/images/slide5.png" alt="Slide 2">
       </div>
     
       <div class="slide">
-        <h5 style="color: white; margin-left: 10px;">Social Platforms</h5>
-        <img  src="/static/css/images/img1.jpg" alt="Slide 3">
+        <h5 style="color: white; margin-left: 10px;">ConnectUs Progress Development</h5>
+        <img  src="/static/css/images/slide6.png" alt="Slide 3">
       </div>
 
       <div class="slide">
@@ -307,7 +309,7 @@
 
 {% block content %}
 
-
+<div>
 <div class="log-out">  
   <a href="{% url 'base:logout' %}" style="position: fixed; color: white; background-image: linear-gradient(to right, #0c0c14, black); text-decoration: none; padding: 10px 20px; border-radius: 5px; transition: color 0.3s, background-color 0.3s;" onmouseover="this.style.color='red'; this.style.backgroundColor='white'" onmouseout="this.style.color='white'; this.style.backgroundColor='transparent'">User Out</a>
 </div>
@@ -316,19 +318,20 @@
   <h4>Welcome, {{ user.username }} <img style="width:20px; height;20px; margin-top: -10px;" src="/static/css/images/verified.png" alt="icon"> </h4>  <!--base.html nakakonek-->
 </div>
 
+<!--
 <div id="customAlert" class="custom-alert">
   <img style="width:auto; height:80px;" src="/static/css/images/logo.png" alt="Welcome Icon">
   <div class="gradient-text1">
   <p style="margin-bottom:60px;"> Welcome Home, {{ user.username }}</p>
   </div>
   <button onclick="closeAlert()">Exit</button>
-</div>
+</div> -->
 
 <div class="message-container draggable">
 <div class="message-container">
-  <div class="message-toggle" onclick="toggleMessage()">
-    <span id="message-icon">&#9993;</span>
-    <span id="message-text">Inbox Message</span>
+  <div class="message-toggle" onclick="toggleMessage()"><img style="width:auto; height:50px;" src="/static/css/images/message.png">
+    <span id="message-icon"></span>
+    <span id="message-text"><h1></span>
   </div>
   <div class="message-box" style="display: none;">
     <div id="message-content">
@@ -339,6 +342,7 @@
   </div>
 </div>
   </div>
+</div>
 </div>
 <script>
   if (window.innerWidth > 768) {
@@ -409,19 +413,34 @@ messageContainer.addEventListener('mousedown', (e) => {
   const rect = messageContainer.getBoundingClientRect();
   offsetX = e.clientX - rect.left;
   offsetY = e.clientY - rect.top;
+
+  // Add a class to change cursor style when dragging
+  messageContainer.classList.add('dragging');
+
+  // Set z-index to bring the element to the top while dragging
+  messageContainer.style.zIndex = 1000;
 });
 
 document.addEventListener('mousemove', (e) => {
   if (isDragging) {
+    // Calculate the new position based on the offset
     messageContainer.style.left = e.clientX - offsetX + 'px';
     messageContainer.style.top = e.clientY - offsetY + 'px';
   }
 });
 
 document.addEventListener('mouseup', () => {
-  isDragging = false;
-});
+  if (isDragging) {
+    isDragging = false;
 
+    // Remove the dragging class and reset cursor style
+    messageContainer.classList.remove('dragging');
+    messageContainer.style.cursor = 'move';
+  
+    // Reset z-index after dragging
+    messageContainer.style.zIndex = '';
+  }
+});
 </script>
 {% endblock content %}
 

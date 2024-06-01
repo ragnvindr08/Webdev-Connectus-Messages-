@@ -21,17 +21,17 @@
   }
   
   .navbar-dark .navbar-nav .nav-link {
-    color: black; /* Changed link color to black */
+    color: white; /* Changed link color to black */
     transition: color 0.5s; /* Added transition for link color */
   }
   
   body.dark-mode {
     background-color: #1e1e1e; /* Dark background */
-    color: #ffffff; /* White text color */
+    color: white; /* White text color */
   }
 
   .card.card-body {
-    background: linear-gradient(90deg, rgba(18,170,235,1) 0%, rgba(198,133,212,1) 46%, rgba(24,204,241,1) 100%);
+    background: radial-gradient(circle, rgba(41,37,42,1) 36%, rgba(28,27,27,1) 100%);
     transition: background-color 0.5s, color 0.5s; /* Smooth transition */
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4); /* Dark mode box shadow */
     border-radius: 40px;
@@ -86,7 +86,7 @@
   left: 25%;
   margin-left: 450px;
   transform: translate(-50%, -50%);
-  background-image: url("/static/css/images/slide2.jpg");
+  background-image: url("/static/css/images/blue.jpeg");
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -119,7 +119,7 @@
 
 .size{
 height:auto;
-width:auto;
+width:400px;
 margin-left:-35px;
 
 }
@@ -127,7 +127,7 @@ margin-left:-35px;
 
 <div class="size">
 
-
+  <img style="margin-left:83px; margin-bottom:30px; width:auto; height:50px;" src="/static/css/images/logo.png" alt="Connectus">
 <h5 style="color:white;">Received Messages</h5>
   <div class="card card-body" style="overflow: auto; max-height: 400px;">
     {% if received_messages %}
@@ -135,8 +135,8 @@ margin-left:-35px;
       <div>
         {% for message in received_messages %}
         <div style="padding:10px; margin-bottom:10px; border-radius:40px; background: linear-gradient(90deg, rgba(114,121,125,0.4780287114845938) 8%, rgba(170,101,185,0.4472163865546218) 50%, rgba(89,239,255,0.4724264705882353) 100%);">
-         <p>@{{ message.sender.username }}<img style="width:15px; height;15px; margin-top: -10px;" src="/static/css/images/verified.png" alt="icon"></p>
-         <p style="font-size: 80%;">Message: {{ message.content }}</p>
+         <p style="color:white;">@{{ message.sender.username }}<img style="width:15px; height;15px; margin-top: -10px;" src="/static/css/images/verified.png" alt="icon"></p>
+         <p style="color:white; font-size: 80%;">Message: {{ message.content }}</p>
         </div>
                 <!-- Add any additional fields you want to display -->
         {% endfor %}

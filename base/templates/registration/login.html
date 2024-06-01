@@ -1,6 +1,14 @@
-<body style=" filter: grayscale(15%); background-color: #2b2b2b; background-image: url('/static/css/images/connect.png');background-size:cover; ');">
- 
+<body style=" filter: grayscale(15%); background: radial-gradient(circle, rgba(43,37,39,1) 49%, rgba(18,18,17,1) 100%);">
+  <img class="logo" src="/static/css/images/logo.png" alt="Connectus">
 <style>
+  .logo {
+    position: fixed;
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    width: auto;
+    height: 45px;
+  }
+
    .slideshow-container {
     max-width: 720px;
     position: relative;
@@ -71,6 +79,23 @@
       background-position: 100% 0; /* Adjust background movement direction as needed */
     }
   }
+
+  .social-icons {
+    margin-top:20px;
+    margin-bottom:-25px;
+    align-items: center;
+    justify-content: center;
+  }
+  .social-icons a {
+    display: inline-block;
+    margin: 0 10px; /* Adjust as needed */
+    text-decoration: none;
+    color: #000; /* Adjust as needed */
+  }
+  .social-icons a img {
+    width: 30px; /* Adjust as needed */
+    height: auto;
+  }
 </style>
   <body>
    
@@ -78,17 +103,17 @@
       
       <div class="slide">
         <h5 style="color: white; margin-left: 10px;">New Features Updates</h5>
-        <img src="/static/css/images/feature1.png" alt="Slide 1">
+        <img src="/static/css/images/slide1.png" alt="Slide 1">
       </div>
     
       <div class="slide">
         <h5 style="color: white; margin-left: 10px;">Welcome to ConnectUs</h5>
-        <img src="/static/css/images/connect.png" alt="Slide 2">
+        <img src="/static/css/images/slide2.png" alt="Slide 2">
       </div>
     
       <div class="slide">
         <h5 style="color: white; margin-left: 10px;">ConnectUs Progress</h5>
-        <img src="/static/css/images/progress.png" alt="Slide 3">
+        <img src="/static/css/images/slide3.png" alt="Slide 3">
       </div>
     </div>
     
@@ -127,8 +152,17 @@
     <button type="submit">Submit</button>
 </form>
 <a class="signup-link" href={% url "base:authView" %}>Sign up</a>
+<div class="social-icons">
+  <a href="https://www.facebook.com"><img src="/static/css/images/facebook.svg" alt="Facebook"></a>
+  <a href="https://www.instagram.com"><img src="/static/css/images/instagram.svg" alt="Instagram"></a>
+  <a href="https://github.com"><img src="/static/css/images/github.svg" alt="GitHub"></a>
+  <a href="#"><img src="/static/css/images/google.svg" alt="Google Sign In"></a>
+</div>
 </div>  
 </div>    
+
+
+
 {% endblock content %}
 
 
